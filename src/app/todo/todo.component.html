@@ -1,0 +1,81 @@
+<app-header></app-header>
+<div class="container-fluid">
+  <h4 *ngIf="this.optionen !== undefined">{{ this.optionen.starttext }}</h4>
+
+  <div class="row">
+    <div class="col-3" id="filter">
+      <div>
+        <form>
+          <input type="radio" id="archiv" name="filter" value="archiv" />
+          <label for="archiv" (click)="setFilter('archiv')">ARCHIV</label><br />
+
+          <input type="radio" id="deleted" name="filter" value="deleted" />
+          <label for="deleted" (click)="setFilter('deleted')">DELETED</label
+          ><br />
+
+          <input type="radio" id="erledigt" name="filter" value="erledigt" />
+          <label for="erledigt" (click)="setFilter('erledigt')">ERLEGIT</label
+          ><br />
+
+          <input type="radio" id="activ" name="filter" value="activ" />
+          <label for="activ" (click)="setFilter('activ')">ACTIV</label><br />
+        </form>
+      </div>
+    </div>
+    <div class="col-9">
+      <div *ngIf="this.optionen !== undefined">
+        <div
+          *ngFor="let entry of entries"
+          [ngStyle]="{ 'background-color': this.optionen.hgfarbe }"
+        >
+          <app-entry
+            *ngIf="
+              this.filterBy == entry.status ||
+              (this.filterBy == 'erledigt' && entry.erledigt == 1)
+            "
+            [entry]="entry"
+            (dataEvent)="receiveDataFromChild($event)"
+          ></app-entry>
+        </div>
+      </div>
+    </div>
+
+    <div class="row" id="formdiv">
+      <div *ngIf="this.entry !== undefined">
+        {{ this.entry.id }}
+        <form (ngSubmit)="submitEntry()">
+          <label for="date">Datum</label>
+
+          <input
+            type="date"
+            id="date"
+            name="date"
+            [(ngModel)]="entry.date"
+            required
+          />
+
+          <label for="text">To-Do</label>
+
+          <input
+            type="text"
+            id="text"
+            name="text"
+            [(ngModel)]="entry.text"
+            required
+          />
+
+          <label for="priority">Priorität</label>
+
+          <select name="priority" id="priority" [(ngModel)]="entry.priority">
+            <option value="0">Gelb</option>
+            <option value="1">Grün</option>
+            <option value="2">Rot</option>
+          </select>
+
+          <button type="submit">Aufbewahren</button>
+        </form>
+      </div>
+      <button type="button" (click)="addNew()">Hinzu</button>
+    </div>
+  </div>
+</div>

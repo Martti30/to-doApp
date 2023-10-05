@@ -1,0 +1,70 @@
+{
+  "user": {
+    "password": "3013",
+    "isLoggedIn": 1
+  },
+  "entries": [
+    {
+      "id": 1,
+      "date": "2023-09-30T12:15:12.235Z",
+      "text": "Wäsche",
+      "priority": 2,
+      "status": "activ",
+      "dopamin": 0,
+      "erledigt": 1
+    },
+    {
+      "id": 2,
+      "date": "2023-09-30T12:18:12.235Z",
+      "text": "Text",
+      "priority": 2,
+      "status": "deleted",
+      "dopamin": 1
+    },
+    {
+      "id": 3,
+      "date": "2023-09-30T12:15:12.235Z",
+      "text": "Text2",
+      "priority": 2,
+      "status": "archiv",
+      "dopamin": 0
+    },
+    {
+      "id": 4,
+      "date": "function now() { [native code] }",
+      "text": "Wäsche2",
+      "priority": 0,
+      "status": "archiv",
+      "erledigt": 0
+    },
+    {
+      "id": 5,
+      "date": "function now() { [native code] }",
+      "text": "INFORMANT",
+      "priority": 0,
+      "status": "deleted",
+      "erledigt": 0
+    },
+    {
+      "id": 6,
+      "date": "function now() { [native code] }",
+      "text": "Text2",
+      "priority": 0,
+      "status": "activ",
+      "erledigt": 0
+    },
+    {
+      "id": 7,
+      "date": "2023-10-05",
+      "text": "nn",
+      "priority": "1",
+      "status": "archiv",
+      "erledigt": 1
+    }
+  ],
+  "optionen": {
+    "hgfarbe": "#f8f6f6",
+    "deleteonlogout": true,
+    "starttext": "Halo du"
+  }
+}

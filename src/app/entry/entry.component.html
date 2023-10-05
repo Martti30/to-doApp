@@ -1,0 +1,15 @@
+<div *ngIf="this.entry !== undefined">
+  <div>
+    <div>{{ this.entry.date }}</div>
+    <div>{{ this.entry.status }}</div>
+    <div>{{ this.entry.text }}</div>
+  </div>
+  <div>
+    <ul>
+      <li (click)="this.delete()">delete</li>
+      <li (click)="this.archivieren()">Archivieren</li>
+      <li (click)="this.erledigen()">erledigen</li>
+      <li (click)="this.setSelected(entry.id)">bearbeiten</li>
+    </ul>
+  </div>
+</div>

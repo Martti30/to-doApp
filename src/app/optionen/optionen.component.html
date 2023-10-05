@@ -1,0 +1,39 @@
+<app-header></app-header>
+
+<div *ngIf="this.optionen !== undefined">
+  <form (ngSubmit)="submitOptionen()">
+    <label for="hgfarbe">HGFarbe</label>
+
+    <input
+      type="color"
+      id="hgfarbe"
+      name="hgfarbe"
+      [(ngModel)]="optionen.hgfarbe"
+      required
+    />
+
+    <label for="starttext">TEXT</label>
+
+    <input
+      type="text"
+      id="starttext"
+      name="starttext"
+      [(ngModel)]="optionen.starttext"
+      required
+    />
+
+    <label for="deleteonlogout">DELETE</label>
+
+    <input
+      type="checkbox"
+      id="deleteonlogout"
+      name="deleteonlogout"
+      [(ngModel)]="optionen.deleteonlogout"
+      required
+    />
+
+    <button type="submit">Zustimmen</button>
+
+    <span>{{ this.message }}</span>
+  </form>
+</div>

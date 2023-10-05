@@ -1,0 +1,15 @@
+<div
+  class="d-flex justify-content-center align-items-center"
+  style="height: 100vh"
+>
+  <div>
+    <h2
+      *ngIf="this.optionen !== undefined && this.optionen.deleteonlogout == 1"
+    >
+      WIr hoffen du hattest spaß daran, alle deine Daten wurden gelöscht. Wenn
+      du ganz von vorne anfangen willst dann bitte LOgIn
+    </h2>
+    <h3>Aufwiedersehen</h3>
+    <a href="/login" class="btn btn-primary">LOGIN</a>
+  </div>
+</div>

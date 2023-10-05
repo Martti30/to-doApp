@@ -1,0 +1,19 @@
+<div
+  class="d-flex justify-content-center align-items-center"
+  style="height: 100vh"
+>
+  <form (ngSubmit)="login()" class="text-center">
+    <fa-icon [ngStyle]="{ color: '' }" [icon]="faCircleUser"></fa-icon>
+    <div>
+      <label for="password">Passwort:</label>
+      <input
+        type="password"
+        id="password"
+        name="password"
+        [(ngModel)]="password"
+        required
+      />
+    </div>
+    <button type="submit" class="btn btn-success">Anmelden</button>
+  </form>
+</div>

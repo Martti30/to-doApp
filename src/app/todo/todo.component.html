@@ -14,7 +14,7 @@
           ><br />
 
           <input type="radio" id="erledigt" name="filter" value="erledigt" />
-          <label for="erledigt" (click)="setFilter('erledigt')">ERLEGIT</label
+          <label for="erledigt" (click)="setFilter('erledigt')">ERLEDIGT</label
           ><br />
 
           <input type="radio" id="activ" name="filter" value="activ" />
@@ -22,15 +22,16 @@
         </form>
       </div>
     </div>
-    <div class="col-9">
+    <div
+      class="col-9 p-0 text-align-center"
+      *ngIf="this.optionen !== undefined"
+      [ngStyle]="{ 'background-color': this.optionen.hgfarbe }"
+    >
       <div *ngIf="this.optionen !== undefined">
-        <div
-          *ngFor="let entry of entries"
-          [ngStyle]="{ 'background-color': this.optionen.hgfarbe }"
-        >
+        <div *ngFor="let entry of entries">
           <app-entry
             *ngIf="
-              this.filterBy == entry.status ||
+              (this.filterBy == entry.status && entry.erledigt == 0) ||
               (this.filterBy == 'erledigt' && entry.erledigt == 1)
             "
             [entry]="entry"
@@ -44,7 +45,7 @@
       <div *ngIf="this.entry !== undefined">
         {{ this.entry.id }}
         <form (ngSubmit)="submitEntry()">
-          <label for="date">Datum</label>
+          <label for="date"></label>
 
           <input
             type="date"
@@ -54,28 +55,29 @@
             required
           />
 
-          <label for="text">To-Do</label>
+          <label for="text"></label>
 
           <input
             type="text"
             id="text"
             name="text"
+            placeholder="todo"
             [(ngModel)]="entry.text"
             required
           />
 
-          <label for="priority">Priorität</label>
+          <label for="priority"></label>
 
           <select name="priority" id="priority" [(ngModel)]="entry.priority">
-            <option value="0">Gelb</option>
-            <option value="1">Grün</option>
+            <option value="0">Grün</option>
+            <option value="1">Gelb</option>
             <option value="2">Rot</option>
           </select>
 
           <button type="submit">Aufbewahren</button>
         </form>
       </div>
-      <button type="button" (click)="addNew()">Hinzu</button>
+      <fa-icon (click)="addNew()" [icon]="faAdd"></fa-icon>
     </div>
   </div>
 </div>

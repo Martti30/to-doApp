@@ -1,15 +1,28 @@
-<div *ngIf="this.entry !== undefined">
-  <div>
+<div class="card mt-5 w-75 rounded">
+  <div
+    class="card-header"
+    *ngIf="this.entry !== undefined"
+    [ngStyle]="{ 'background-color': getPriorityColor() }"
+  >
     <div>{{ this.entry.date }}</div>
     <div>{{ this.entry.status }}</div>
-    <div>{{ this.entry.text }}</div>
   </div>
-  <div>
-    <ul>
-      <li (click)="this.delete()">delete</li>
-      <li (click)="this.archivieren()">Archivieren</li>
-      <li (click)="this.erledigen()">erledigen</li>
-      <li (click)="this.setSelected(entry.id)">bearbeiten</li>
-    </ul>
+
+  <div class="card-body" *ngIf="this.entry !== undefined">
+    {{ this.entry.text }}
+  </div>
+  <div *ngIf="this.entry !== undefined" class="row card-footer m-1">
+    <div class="col">
+      <fa-icon (click)="delete()" [icon]="faTrash"></fa-icon>
+    </div>
+    <div class="col">
+      <fa-icon (click)="archivieren()" [icon]="faArchive"></fa-icon>
+    </div>
+    <div class="col">
+      <fa-icon (click)="erledigen()" [icon]="faCheckCircle"></fa-icon>
+    </div>
+    <div class="col">
+      <fa-icon (click)="setSelected(entry.id)" [icon]="faPen"></fa-icon>
+    </div>
   </div>
 </div>

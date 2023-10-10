@@ -6,6 +6,8 @@ import { Entry } from '../entry/entry';
 import { EmptyExpr } from '@angular/compiler';
 import { OptionenService } from '../optionen.service';
 import { Optionen } from '../optionen/optionen';
+import { faPlusCircle } from "@fortawesome/free-solid-svg-icons";
+
 
 
 
@@ -19,6 +21,8 @@ export class TodoComponent {
   @Input() entries: Entry[] = [];
   @Input() entry: Entry | undefined;
   @Input() optionen: Optionen | undefined;
+
+  faAdd = faPlusCircle;
 
   selectedEntry: number | undefined;
   setSelectedEntry: any;

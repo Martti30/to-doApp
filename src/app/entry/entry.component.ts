@@ -1,6 +1,8 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Entry } from './entry';
 import { EntryService } from '../entry.service';
+import { faCheckCircle, faTrash, faPen, faArchive } from "@fortawesome/free-solid-svg-icons";
+
 
 @Component({
   selector: 'app-entry',
@@ -10,6 +12,13 @@ import { EntryService } from '../entry.service';
 export class EntryComponent {
   @Input() entry: Entry | undefined;
   @Output() dataEvent = new EventEmitter<number>();
+
+  faTrash = faTrash;
+  faArchive = faArchive;
+  faCheckCircle = faCheckCircle;
+  faPen = faPen;
+
+
 
   constructor(private entryService: EntryService) { }
 
@@ -43,5 +52,13 @@ export class EntryComponent {
       });
     }
 
+  }
+
+  getPriorityColor() {
+    if (this.entry !== undefined) {
+      var colors = ["#779e24", "#dddd35", "#d83024"];
+      return colors[this.entry.priority];
+    }
+    return null;
   }
 }

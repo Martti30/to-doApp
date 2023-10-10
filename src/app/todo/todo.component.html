@@ -32,7 +32,9 @@
           <app-entry
             *ngIf="
               (this.filterBy == entry.status && entry.erledigt == 0) ||
-              (this.filterBy == 'erledigt' && entry.erledigt == 1)
+              (this.filterBy == 'erledigt' &&
+                entry.erledigt == 1 &&
+                entry.status != 'deleted')
             "
             [entry]="entry"
             (dataEvent)="receiveDataFromChild($event)"

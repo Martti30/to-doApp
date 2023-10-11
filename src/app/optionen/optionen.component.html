@@ -1,6 +1,10 @@
 <app-header></app-header>
 <div class="container">
-  <div class="row">
+  <div
+    class="row"
+    [ngStyle]="{ 'background-color': this.optionen.hgfarbe }"
+    *ngIf="this.optionen !== undefined"
+  >
     <div class="col-md-4">
       <div *ngIf="this.optionen !== undefined">
         <form (ngSubmit)="submitOptionen()">

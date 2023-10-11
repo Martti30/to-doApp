@@ -102,9 +102,13 @@ export class TodoComponent {
   }
 
   addNew() {
-    var maxEntry = this.entries[this.entries.length - 1];
+    var newId = 0;
+    if (this.entries.length > 0) {
+      var maxEntry = this.entries[this.entries.length - 1];
+      newId = maxEntry.id + 1;
+    }
     var newEntry: Entry = {
-      id: maxEntry.id + 1,
+      id: newId,
       date: Date.now.toString(),
       text: "",
       priority: 0,
@@ -113,6 +117,7 @@ export class TodoComponent {
     }
 
     this.entry = newEntry;
+
   }
 
   receiveDataFromChild(id: number) {

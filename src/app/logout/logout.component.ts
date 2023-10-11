@@ -4,6 +4,7 @@ import { AuthService } from '../auth.service';
 import { OptionenService } from '../optionen.service';
 import { Optionen } from '../optionen/optionen';
 import { EntryService } from '../entry.service';
+import { Entry } from '../entry/entry';
 
 @Component({
   selector: 'app-logout',
@@ -24,13 +25,25 @@ export class LogoutComponent {
       next: (optionen) => {
         this.optionen = optionen;
 
-        this.entryService.deleteAll().subscribe({
-          next: (response) => (console.log("databaseClean"))
-        });
+        this.deleteAll();
+
 
       }
     });
   }
 
+  deleteAll() {
+    this.entryService.getAll().subscribe({
+      next: (entries) => {
+        entries.forEach(entry => {
+          this.entryService.removeEntry(entry).subscribe({
+            next: (response) => (console.log("EntryDeleted:" + entry.id))
+          });
+        });
 
+      }
+
+
+    });
+  }
 }

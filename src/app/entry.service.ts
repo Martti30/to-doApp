@@ -8,6 +8,9 @@ import { Observable } from 'rxjs';
 })
 
 export class EntryService {
+  deleteAll() {
+    throw new Error('Method not implemented.');
+  }
 
 
   private apiBaseUrl = 'http://localhost:3000/entries';
@@ -62,8 +65,13 @@ export class EntryService {
     return this.updateEntry(entry);
   }
 
-  deleteAll(): Observable<any> {
-    return this.http.put(this.apiBaseUrl, []);
+  removeEntry(entry: Entry): Observable<any> {
 
+    const url = `${this.apiBaseUrl}/${entry.id}`;
+
+    return this.http.delete<any>(url);
+    // console.log(entry);
   }
+
+
 }
